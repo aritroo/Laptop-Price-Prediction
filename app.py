@@ -5,15 +5,13 @@ import pickle
 from PIL import Image
 import urllib.request
 
-#urllib.request.urlretrieve('https://mega.nz/file/iL53nSjD#kj1_kH_SERDdv73TebvsHU_k3Idm9q_n7Ro61zrYMvo','lap.png')
-#image = Image.open("lap.png")
-#st.image(image, use_column_width=True)
 
-# import the model
+# importing the model
 pipe = pickle.load(open('pipe.pkl','rb'))
 df = pickle.load(open('df.pkl','rb'))
 
 st.title("Laptop Price Predictor")
+#st.image('banner.png')
 
 # brand
 company = st.sidebar.selectbox('Brand',df['Company'].unique())
@@ -54,6 +52,46 @@ gpu = st.sidebar.selectbox('GPU',df['Gpu Brand'].unique())
 
 # os
 os = st.sidebar.selectbox('OS',df['os'].unique())
+
+if(company=='Apple'):
+    st.image('apple.png')
+
+elif(company=='HP'):
+    if(type=='Gaming'):
+        st.image('hp_gaming.jpg')
+    else:
+        st.image('hp.png')
+elif(company=='Acer'):
+    if(type=='Gaming'):
+        st.image('acer_gaming.png')
+    else:
+        st.image('acer_notebook.png')
+elif(company=='Asus'):
+    if(type=='Gaming'):
+        st.image('asus_gaming.jpg')
+    else:
+        st.image('asus_notebook.jpg')
+elif(company=='Dell'):
+    if(type=='Gaming'):
+        st.image('dell_gaming.jpg')
+    else:
+        st.image('dell_notebook.jpg')
+elif(company=='Chuwi'):
+    st.image('Chuwi.jpg')
+elif(company=='MSI'):
+    if(type=='Gaming'):
+        st.image('msi_gaming.jpg')
+    else:
+        st.image('msi_notebook.jpg')
+elif(company=='Lenovo'):
+    if(type=='Gaming'):
+        st.image('lenevo_gaming.jpg')
+    else:
+        st.image('lenevo_notebook.jpg')
+elif(company=='Microsoft'):
+    st.image('microsoft.png')
+
+
 
 if st.button('Predict Price'):
     # query
